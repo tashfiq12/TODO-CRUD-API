@@ -8,6 +8,7 @@
 ## Project installation guide:
 * NODEJS installation is needed in the working machine.
 * Download/Clone the project repository.
+* Connect the app with Mongo db atlas by filling up the value of mongoURI in the default.json and production.json file in config folder.
 * Run the command  ``` npm install ```  in the terminal or cmd .
 * Run the command ``` npm run server ```  in the terminal or cmd .
 
