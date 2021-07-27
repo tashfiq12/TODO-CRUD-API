@@ -136,4 +136,29 @@ router.delete("/:id", auth, async (req, res) => {
      }
 });
 
+//@route GET api/todos/countLoggedInUserTodos
+//@desc counting logged in user todos
+//@use of aggregation function
+//@access private
+
+
+router.get('/countLoggedInUserTodos',auth, async (req, res)=> {
+  let user1 = await User.findById(req.user.id);
+  if(user1.isOnlineStatus== true){
+        Todos.aggregate([
+            {
+                "$group": {
+                    "_id": req.user.id,
+                    "count": { "$sum": 1 }
+                }
+            }
+        ], function (err, result) {
+            console.log(result);
+            res.json(result);
+        });
+}
+});
+
+
+
 module.exports = router;
